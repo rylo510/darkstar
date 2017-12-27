@@ -1,0 +1,2 @@
+UPDATE zone_settings SET misc = misc + 32;
+UPDATE zone_settings SET zoneip = '127.0.0.1'; -- ip address
