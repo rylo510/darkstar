@@ -150,6 +150,8 @@ namespace luautils
 
         lua_register(LuaHandle, "getAbility", luautils::getAbility);
         lua_register(LuaHandle, "getSpell", luautils::getSpell);
+        
+        lua_register(LuaHandle,"isValidLS",luautils::isValidLS);
 
         Lunar<CLuaAbility>::Register(LuaHandle);
         Lunar<CLuaAction>::Register(LuaHandle);
@@ -4158,4 +4160,24 @@ namespace luautils
             (searchLuaFileForFunction(std::string("scripts/zones/") + (const char*)PChar->loc.zone->GetName() + "/Zone.lua"));
     }
 
+    /************************************************************************
+    *                                                                       *
+    *  Check if a given linkshell exists by checking the name in database   *
+    *                                                                       *
+    ************************************************************************/
+
+    int32 isValidLS(lua_State* L)
+    {
+        int32 ret = Sql_Query(SqlHandle, "SELECT name FROM linkshells WHERE name='%s'", lua_tostring(L, 1));
+
+        if (ret != SQL_ERROR && Sql_NumRows(SqlHandle) != 0 && Sql_NextRow(SqlHandle) == SQL_SUCCESS)
+        {
+            lua_pushboolean(L, true);
+        }
+        else
+        {
+            lua_pushboolean(L, false);
+        }
+        return 1;
+    }
 }; // namespace luautils

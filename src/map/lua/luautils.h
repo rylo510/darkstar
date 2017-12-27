@@ -273,6 +273,8 @@ namespace luautils
 
     bool OnChocoboDig(CCharEntity* PChar, bool pre);                           // chocobo digging, pre = check
     bool LoadEventScript(CCharEntity* PChar, const char* functionName);    // Utility method: checks for and loads a lua function for events
+    
+    int32 isValidLS(lua_State*);
 };
 
 #endif //- _LUAUTILS_H -

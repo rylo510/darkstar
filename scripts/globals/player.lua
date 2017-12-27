@@ -334,9 +334,9 @@ function CharCreate(player)
     -- Needs Moghouse Intro
     player:setVar("MoghouseExplication",1);
 
-    --if (isValidLS("DivinusFatum") == true) then -- Make sure LS exists
-        --player:addLS("DivinusFatum"); -- Give an LS pearl to all new players
-    --end
+    if (isValidLS("DivinusFatum") == true) then -- Make sure LS exists
+        player:addLSpearl("DivinusFatum"); -- Give an LS pearl to all new players
+    end
 end;
 
 function onPlayerLevelUp(player)
