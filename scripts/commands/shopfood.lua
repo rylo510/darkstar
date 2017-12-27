@@ -2,6 +2,8 @@
 -- func: shopfood
 -- desc: Shows a shop for food
 ---------------------------------------------------------------------------------------------------
+package.loaded["scripts/globals/fateshand"] = nil;
+require("scripts/globals/fateshand");
 
 cmdprops =
 {
@@ -10,6 +12,11 @@ cmdprops =
 };
 
 function onTrigger(player)
+    if ( hasEnmityNearby(player) == 1 ) then
+        player:PrintToPlayer("Cannot execute command while in battle!");
+        return
+    end
+
     stock = {
             4512,   80,     -- Vampire Juice
             4303,   80,     -- Persikos Au Lait

@@ -1,6 +1,30 @@
 require("scripts/globals/crafting");
 require("scripts/globals/shop");
 
+function hasEnmityNearby(player)
+    local result = 0;
+    
+    if ( player:isEngaged() ) then
+        result = 1
+    end
+
+    local targets = player:getNearbyEntities();
+    
+    if ( type(targets) == "table" ) then
+        for _, value in pairs(targets) do
+            if ( value:isMob() ) then
+                local playerCE = value:getCE(player)
+                if ( playerCE > 0 ) then
+                    result = 1
+                    break
+                end
+            end
+        end
+    end
+    
+    return result
+end;
+
 function guildCookingShop_fh(player,npc)
     player:addKeyItem(2042); -- pattiserie
     player:addKeyItem(2041); -- noodle

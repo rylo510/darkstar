@@ -2,6 +2,8 @@
 -- func: runspeed
 -- desc: Sets and records the players chosen movement speed.
 ---------------------------------------------------------------------------------------------------
+package.loaded["scripts/globals/fateshand"] = nil;
+require("scripts/globals/fateshand");
 
 cmdprops =
 {
@@ -15,7 +17,11 @@ function error(player, msg)
 end;
 
 function onTrigger(player, speed)
-
+    if ( hasEnmityNearby(player) == 1 ) then
+        player:PrintToPlayer("Cannot execute command while in battle!");
+        return
+    end
+    
     -- validate speed amount
     if (speed == nil or speed < 0 or speed > 100) then
         error(player, "Invalid speed amount.");

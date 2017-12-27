@@ -2,7 +2,8 @@
 -- func: shopalchemy
 -- desc: Shows a crafting shop and grants craft mastery
 ---------------------------------------------------------------------------------------------------
-
+package.loaded["scripts/globals/fateshand"] = nil;
+require("scripts/globals/fateshand");
 
 cmdprops =
 {
@@ -10,6 +11,11 @@ cmdprops =
     parameters = ""
 };
 function onTrigger(player)
+    if ( hasEnmityNearby(player) == 1 ) then
+        player:PrintToPlayer("Cannot execute command while in battle!");
+        return
+    end
+
     player:addKeyItem(2042); -- pattiserie
     player:addKeyItem(2041); -- noodle
     player:addKeyItem(2040); -- raw
