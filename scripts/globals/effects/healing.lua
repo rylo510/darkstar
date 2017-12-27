@@ -41,7 +41,8 @@ function onEffectTick(target,effect)
          -- Each rank of Clear Mind provides +3 hMP (via MOD_MPHEAL)
          -- Each tic of healing should be +1mp more than the last
          -- Clear Mind III increases this to +2, and Clear Mind V to +3 (via MOD_CLEAR_MIND)
-            target:addMP(12+((healtime-2) * (1+target:getMod(MOD_CLEAR_MIND)))+(target:getMod(MOD_MPHEAL)));
+            --target:addMP(12+((healtime-2) * (1+target:getMod(MOD_CLEAR_MIND)))+(target:getMod(MOD_MPHEAL)));
+            target:addMP(24+((healtime-2) * (1+target:getMod(MOD_CLEAR_MIND)))+(target:getMod(MOD_MPHEAL))); -- Default is 12+. Debating making an overall *2 effect to increase bonus of mods too.
         end
     end
 

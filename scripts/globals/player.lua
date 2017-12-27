@@ -25,7 +25,12 @@ function onGameIn(player, firstlogin, zoning)
     end
 
     if (zoning) then -- Things checked ONLY during zone in go here.
-        -- Nothing here yet :P
+        -- (rylo) Reapplies custom speed value upon zoning
+        local runSpeed = player:getVar("Run_Speed");
+        
+        if ( runSpeed > 60 and runSpeed < 161 ) then
+            player:speed( runSpeed );
+        end
     end
 
     -- Things checked BOTH during logon AND zone in below this line.
@@ -297,6 +302,7 @@ function CharCreate(player)
        player:changeContainerSize(5,(START_INVENTORY - 30))
     end
 
+    -- Give characters all outpost warps including Tu'Lia and Tavnazia
     if (UNLOCK_OUTPOST_WARPS >= 1) then
        player:addNationTeleport(0,2097120);
        player:addNationTeleport(1,2097120);
@@ -328,6 +334,9 @@ function CharCreate(player)
     -- Needs Moghouse Intro
     player:setVar("MoghouseExplication",1);
 
+    --if (isValidLS("DivinusFatum") == true) then -- Make sure LS exists
+        --player:addLS("DivinusFatum"); -- Give an LS pearl to all new players
+    --end
 end;
 
 function onPlayerLevelUp(player)

@@ -4,12 +4,17 @@
 -- Type: Tutorial NPC
 -- !pos -364.121 -11.034 -167.456 235
 -----------------------------------
+package.loaded["scripts/globals/fateshand"] = nil;
+-----------------------------------
+require("scripts/globals/fateshand");
+
 
 -----------------------------------
 -- onTrade Action
 -----------------------------------
 
 function onTrade(player,npc,trade)
+    tradeAdvCoupon(player,npc,trade); -- (rylo)
 end;
 
 -----------------------------------

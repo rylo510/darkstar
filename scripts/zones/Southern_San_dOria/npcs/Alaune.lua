@@ -6,10 +6,12 @@
 -- !pos -90 1 -56
 -----------------------------------
 package.loaded["scripts/zones/Southern_San_dOria/TextIDs"] = nil;
+package.loaded["scripts/globals/fateshand"] = nil; -- (rylo)
 -----------------------------------
 require("scripts/zones/Southern_San_dOria/TextIDs");
 require("scripts/globals/settings");
 require("scripts/globals/quests");
+require("scripts/globals/fateshand"); -- (rylo)
 
 -----------------------------------
 -- onTrade Action
@@ -26,6 +28,8 @@ function onTrade(player,npc,trade)
             player:messageSpecial(FLYER_REFUSED);
         end
     end
+    
+    tradeAdvCoupon(player,npc,trade); -- (rylo)
 end;
 
 -----------------------------------

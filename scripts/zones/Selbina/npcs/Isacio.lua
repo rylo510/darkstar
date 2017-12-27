@@ -55,6 +55,33 @@ function onTrigger(player,npc)
         end
     else
         if (player:getMainLvl() >= SUBJOB_QUEST_LEVEL) then
+            -- (rylo) Automatically grant items upon start of quest
+            if (player:hasItem(537) == false) then
+                if (player:getFreeSlotsCount() == 0) then
+                    player:messageSpecial( ITEM_CANNOT_BE_OBTAINED, 537 );
+                else
+                    player:addItem(537);
+                    player:messageSpecial(ITEM_OBTAINED,537);
+                end
+            end
+            if (player:hasItem(538) == false) then
+                if (player:getFreeSlotsCount() == 0) then
+                    player:messageSpecial( ITEM_CANNOT_BE_OBTAINED, 538 );
+                else
+                    player:addItem(538);
+                    player:messageSpecial(ITEM_OBTAINED,538);
+                end
+            end
+            if (player:hasItem(539) == false) then
+                if (player:getFreeSlotsCount() == 0) then
+                    player:messageSpecial( ITEM_CANNOT_BE_OBTAINED, 539 );
+                else
+                    player:addItem(539);
+                    player:messageSpecial(ITEM_OBTAINED,539);
+                end
+            end
+            -- end 
+            
             player:startEvent(111,538);
         else
             player:startEvent(119);
