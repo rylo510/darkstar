@@ -90,6 +90,7 @@ function onTrigger(player)
             11403, 500,    -- Talaria
             10383,  40,    -- Dream Mittens +1
             15698,15000,   -- Sneaking Boots
+            18166, 200,    -- Happy Egg
         }
     showShop(player, STATIC, stock);
 end
