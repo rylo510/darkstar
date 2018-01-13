@@ -91,6 +91,8 @@ function onTrigger(player)
             10383,  40,    -- Dream Mittens +1
             15698,15000,   -- Sneaking Boots
             18166, 200,    -- Happy Egg
+            18167, 200,    -- Fortune Egg
+            18169,2000,    -- TSAR'S EGG
         }
     showShop(player, STATIC, stock);
 end
